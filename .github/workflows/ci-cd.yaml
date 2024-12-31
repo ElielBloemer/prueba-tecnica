@@ -26,11 +26,11 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t your-dockerhub-username/nginx-server:latest .
+        docker build -t ebloemer/nginx-server:${{ github.sha }} .
 
     - name: Push Docker image
       run: |
-        docker push your-dockerhub-username/nginx-server:latest
+        docker push ebloemer/nginx-server:${{ github.sha }}
 
     - name: Deploy on remote server
       uses: appleboy/ssh-action@v0.1.10
