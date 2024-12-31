@@ -1,5 +1,5 @@
 
-# 2-APPS DOCKERIZADA
+# 2-APPS DOCKERIZADA🐳
 
 **Despliegue Dockerizado** de una Aplicación Django y React.js
 Este proyecto contiene una aplicación web compuesta por un backend desarrollado en Django y un frontend en React.js.
@@ -38,7 +38,7 @@ Requisitos Previos:
   cd /2-DESPLIEGUE_APP_DOCKERIZADA
   bash init-docker.sh
 ```
-## Servicios en el Docker Compose
+## Servicios en el Docker Compose 🐳
 
 El archivo docker-compose.yml define los siguientes servicios:
 
@@ -83,7 +83,6 @@ Endpoint: http://localhost:8000/api/users/register
 
 Método: POST
 
-
 ```bash
 Datos requeridos:
     {
@@ -121,7 +120,7 @@ Un cluster Kubernetes funcionando (EKS, GKE).
 - 2-Kubectl:
   Instalar kubectl y autenticarse contra la api k8s.
 
-**IMPORTANTE!**
+🚨**IMPORTANTE!**🚨
 En la construccion de la imagen del backend(**ebloemer/back-craf:v2**) se elimino del backend/entrypoint.sh el pedazo de codigo:
 
 ```bash
@@ -225,25 +224,28 @@ kubectl apply -f back.yaml -f front.yaml -f db.yaml
 Si se dispone de un balanceador para poder acceder al servicio del frontend seria se debe crear el ingress 
 apuntando al puerto 80 en el svc-front en el namespace frontend, svc-front -n frontend https://DNS-FRONTEND
 
-**IMPORTANTE!** tambien se debe haber creado el usuario en el backend de la misma forma que se genero anteriormente
+🚨**IMPORTANTE!**🚨 
+
+tambien se debe haber creado el usuario en el backend de la misma forma que se genero anteriormente
 
 Probar el acceso de los servicios via port-forward
+
 BACKEND:
 ```bash
 kubectl port-forward svc/svc-back -n backend 8000:8000
-```
-Forwarding from 127.0.0.1:8000 -> 8000
 
+Forwarding from 127.0.0.1:8000 -> 8000
 Forwarding from [::1]:8000 -> 8000
+```
 
 
 FRONTEND:
 ```bash
 kubectl port-forward svc/svc-front -n frontend 3000:80
-```
-Forwarding from 127.0.0.1:3000 -> 3000
 
+Forwarding from 127.0.0.1:3000 -> 3000
 Forwarding from [::1]:3000 -> 3000
+```
 
 ### Observabilidad y metricas
 
