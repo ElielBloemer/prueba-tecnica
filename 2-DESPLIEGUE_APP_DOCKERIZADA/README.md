@@ -82,9 +82,12 @@ Frontend: http://localhost:3000
 Backend: http://localhost:8000
 
 ## Probando backend
-Registrar usuarios en el Backend,
+Registrar usuarios en el Backend,se tuvo que entender el codigo para asi generar usuarios
+
 Endpoint: http://localhost:8000/api/users/register
 Método: POST
+
+
 ```bash
 Datos requeridos:
     {
