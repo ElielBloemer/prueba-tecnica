@@ -4,6 +4,7 @@ on:
       - main
     paths:
       - "3-CICD/index.html"
+  workflow_dispatch:  
 
 jobs:
   build-and-deploy:
