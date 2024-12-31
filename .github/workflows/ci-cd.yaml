@@ -22,7 +22,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ebloemer/nginx-server:${{ github.sha }} .
+        docker build -t ebloemer/nginx-server:${{ github.sha }} -f 3-CICD/Dockerfile 3-CICD
         echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
 
     - name: Push Docker image
