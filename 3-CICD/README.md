@@ -153,7 +153,7 @@ Publica la imagen en Docker Hub para que esté disponible para el servidor remot
 ```
 
 ### Para Usarlo debes:
-**1-Configurar Secretos en GitHub:**
+**1-Configurar Secretos en GitHub:** 🔒
 
   - **DOCKER_USERNAME** y **DOCKER_PASSWORD:** Credenciales de Docker Hub.
   - **SERVER_HOST, SERVER_USER, SERVER_SSH_KEY:** Detalles para acceder al servidor remoto.
@@ -175,6 +175,7 @@ Accede al servidor remoto para confirmar que la nueva versión está disponible 
 
 - El servidor remoto debe tener Docker instalado y configurado.
 - Conexion via ssh desde internet para que se pueda desplegar el contenido.
+
 
 ### Autor
 

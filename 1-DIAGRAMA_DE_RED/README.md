@@ -23,6 +23,7 @@ El diseño de red está representado en el diagrama siguiente:
 
 **2-Cluster de Kubernetes (Amazon EKS):**
  - El sistema está desplegado en un cluster Amazon EKS, con nodos de trabajo configurados para alta disponibilidad y escalabilidad.
+ - Lo ideal seria tener una vpn para poder saltar a la Api de K8S pero en ese caso se hace publica para poder fines demonstrativos.
  - Los namespaces separan el frontend (Namespace-frontend) y el backend (Namespace-backend) para un mejor aislamiento.
 
  **3-Frontend en JavaScript:**
@@ -68,6 +69,8 @@ Amazon Route 53: Gestiona el DNS de la aplicación, redirigiendo los usuarios al
 **2-Cargas Variables:**
 
 - Los HPA y cluster Autoscaler en el cluster EKS escalan los servicios según el uso de recursos.
+
+Es un diagrama a alto nivel pero por detras,se encuentra varios otros servicios como segurity groups,usuarios IAM,tablas de routeos,etc.
 
 ### Autor
 
