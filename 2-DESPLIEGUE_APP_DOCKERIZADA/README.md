@@ -120,7 +120,7 @@ Un cluster Kubernetes funcionando (EKS, GKE).
 - 2-Kubectl:
   Instalar kubectl y autenticarse contra la api k8s.
 
-🚨**IMPORTANTE!**🚨
+🚨 **IMPORTANTE!** 🚨
 En la construccion de la imagen del backend(**ebloemer/back-craf:v2**) se elimino del backend/entrypoint.sh el pedazo de codigo:
 
 ```bash
