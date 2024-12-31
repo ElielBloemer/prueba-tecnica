@@ -80,6 +80,7 @@ Backend: http://localhost:8000
 Registrar usuarios en el Backend,se tuvo que entender el codigo para asi generar usuarios...
 
 Endpoint: http://localhost:8000/api/users/register
+
 Método: POST
 
 
