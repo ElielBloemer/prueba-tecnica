@@ -1,0 +1,151 @@
+apiVersion: v1
+kind: Namespace 
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: front
+  name: front
+  namespace: frontend
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0%
+      maxSurge: 25%
+  selector:
+    matchLabels:
+      run: front
+  template: 
+    metadata:
+      labels:
+        run: front  
+    spec:      
+      containers:
+      - image: ebloemer/front-craf:v2
+        name: front
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: cm-front 
+        resources: 
+          requests:
+            cpu: 200m
+            memory: 512Mi
+          limits:
+            cpu: 400m
+            memory: 1Gi
+        startupProbe:
+          tcpSocket: 
+            port: 3000
+          initialDelaySeconds: 120
+          periodSeconds: 15
+          timeoutSeconds: 15   
+        livenessProbe:
+          tcpSocket: 
+            port: 3000
+          initialDelaySeconds: 120
+          periodSeconds: 15
+          timeoutSeconds: 15
+        readinessProbe:
+          tcpSocket: 
+            port: 3000
+          initialDelaySeconds: 120
+          periodSeconds: 15
+          timeoutSeconds: 15    
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+---
+apiVersion: v1
+data:
+  API_SERVER: http://svc-back.backend.svc:8000/api/
+  BROWSER: none
+kind: ConfigMap
+metadata:
+  name: cm-front
+  namespace: frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: front
+  name: svc-front
+  namespace: frontend
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    run: front
+status:
+  loadBalancer: {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  namespace: frontend
+  name: allow-ingress-and-egress-front
+spec: 
+  podSelector: 
+    matchLabels:
+      run: front
+  policyTypes:
+  - Ingress 
+  - Egress
+  ingress:
+  - ports:
+    - protocol: TCP
+      port: 3000
+
+  egress:    
+  - to:
+    - podSelector:
+        matchLabels:
+          run: back
+      namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: backend
+          
+    ports:
+    - protocol: TCP
+      port: 8000
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: front-hpa
+  namespace: frontend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: front
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 90
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 90
+

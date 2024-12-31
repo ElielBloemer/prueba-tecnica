@@ -1,0 +1,180 @@
+apiVersion: v1
+kind: Namespace 
+metadata:
+  name: backend
+  labels:
+    app: backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: backend
+  labels:
+    run: back
+  name: back
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0%
+      maxSurge: 25%
+  selector:
+    matchLabels:
+      run: back
+  template:
+    metadata:
+      labels:
+        run: back  
+    spec:      
+      initContainers:
+      - name: wait-for-db
+        envFrom: 
+        - secretRef:
+            name: secret-back
+        image: busybox
+        command: ["sh", "-c"]
+        args:
+          - |
+            #!/bin/sh
+            if [ "$DATABASE" = "postgres" ]; then
+              echo "Waiting for postgres..."
+              while ! nc -z $SQL_HOST $SQL_PORT; do
+                sleep 0.1
+              done
+              echo "PostgreSQL started"
+            fi
+      containers:
+      - image: ebloemer/back-craf:v2
+        name: back
+        startupProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          timeoutSeconds: 15
+        livenessProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          timeoutSeconds: 15
+        readinessProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          timeoutSeconds: 15    
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: secret-back
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi  
+---
+apiVersion: v1
+data:
+  DATABASE: cG9zdGdyZXM=
+  SQL_DATABASE: Y29yZQ==
+  SQL_HOST: c3ZjLXBvc3RncmVzLmJhc2UtcG9zdGdyZXMuc3ZjLmNsdXN0ZXIubG9jYWw=
+  SQL_PASSWORD: Y3JhZnRlY2gtdGVzdA==
+  SQL_PORT: NTQzMg==
+  SQL_USER: dXNlcg==
+kind: Secret
+metadata:
+  name: secret-back
+  namespace: backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: back
+  name: svc-back
+  namespace: backend
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    run: back
+status:
+  loadBalancer: {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  namespace: backend
+  name: allow-ingress-and-egress-back
+spec: 
+  podSelector:
+    matchLabels:
+      run: back
+  policyTypes:
+  - Ingress 
+  - Egress
+  ingress:
+  - from: 
+    - podSelector:
+        matchLabels:
+          run: front
+      namespaceSelector:
+        matchLabels:
+          app: front
+    ports:
+    - protocol: TCP
+      port: 8000
+
+  egress:    
+  - to:
+    - podSelector:
+        matchLabels:
+          run: postgres
+      namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: backend
+          
+    ports:
+    - protocol: TCP
+      port: 5432
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53            
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: back-hpa
+  namespace: backend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: back
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 90
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 90
+        
+
+
+
