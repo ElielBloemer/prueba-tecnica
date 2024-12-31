@@ -7,7 +7,6 @@ on:
     paths:
       - "index.html"
       - "Dockerfile"
-      - "docker-compose.yml"
       - ".github/workflows/ci-cd.yml"
 
 jobs:
