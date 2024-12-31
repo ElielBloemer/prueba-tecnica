@@ -155,6 +155,8 @@ spec:
             fi
             ...
 ```            
+
+### Estructura Manifiestos
 ```bash
   .
 ├── backend/
