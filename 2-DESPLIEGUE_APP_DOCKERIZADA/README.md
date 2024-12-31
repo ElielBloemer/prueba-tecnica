@@ -103,8 +103,15 @@ Respuesta esperada:
 Asegúrate de que API_SERVER=http://back:8000/api/ apunte al backend, en el archivo frontend/.env
 
 Método: POST
+
 http://localhost:3000
+
+### Pantalla de inicio
+
 ![alt text](./image.png)
+
+### Pantalla cuando ya logueado
+
 ![alt text](./image-1.png)
 
 ## DESPLIEGUE PARA CLOUD(EKS,GKE)
