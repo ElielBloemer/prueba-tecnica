@@ -39,5 +39,7 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
-          docker-compose pull
-          docker-compose up -d
+          mkdir -p ~/deploy-scripts
+          scp ./scripts/deploy.sh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/deploy-scripts/deploy.sh
+          chmod +x ~/deploy-scripts/deploy.sh
+          ~/deploy-scripts/deploy.sh ${{ github.sha }}
