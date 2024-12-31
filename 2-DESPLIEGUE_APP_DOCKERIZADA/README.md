@@ -114,7 +114,7 @@ Requisitos Previos:
 Un cluster Kubernetes funcionando (EKS, GKE).
 - 2-Kubectl:
   Instalar kubectl y autenticarse contra la api k8s.
-  
+
 **IMPORTANTE!**
 En la construccion de la imagen del backend(**ebloemer/back-craf:v2**) se elimino del backend/entrypoint.sh el pedazo de codigo:
 
@@ -132,6 +132,29 @@ fi
 ```
 y se creo un **initContainer** en el deployment del backend para ejecutar esa funcion de aguardar 
 la inicializacion de la base de datos.
+
+```bash
+...
+spec:      
+      initContainers:
+      - name: wait-for-db
+        envFrom: 
+        - secretRef:
+            name: secret-back
+        image: busybox
+        command: ["sh", "-c"]
+        args:
+          - |
+            #!/bin/sh
+            if [ "$DATABASE" = "postgres" ]; then
+              echo "Waiting for postgres..."
+              while ! nc -z $SQL_HOST $SQL_PORT; do
+                sleep 0.1
+              done
+              echo "PostgreSQL started"
+            fi
+            ...
+```            
 ```bash
   .
 ├── backend/
