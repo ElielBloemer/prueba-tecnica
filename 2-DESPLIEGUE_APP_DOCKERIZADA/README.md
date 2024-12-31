@@ -224,7 +224,7 @@ kubectl apply -f back.yaml -f front.yaml -f db.yaml
 Si se dispone de un balanceador para poder acceder al servicio del frontend seria se debe crear el ingress 
 apuntando al puerto 80 en el svc-front en el namespace frontend, svc-front -n frontend https://DNS-FRONTEND
 
-🚨**IMPORTANTE!**🚨 
+🚨 **IMPORTANTE!** 🚨 
 
 tambien se debe haber creado el usuario en el backend de la misma forma que se genero anteriormente
 
