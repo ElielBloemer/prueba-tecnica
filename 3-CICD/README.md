@@ -1,5 +1,5 @@
 
-# Pipeline CI/CD para NGINX con Actualización Automática
+# Pipeline CI/CD para NGINX con Actualización Automática ⚙️
 
 Este proyecto implementa un pipeline CI/CD para construir, publicar y desplegar una imagen de Docker que contiene un servidor NGINX con un archivo index.html predeterminado. El pipeline está configurado para reaccionar a cambios en el archivo index.html y desplegar automáticamente la nueva versión en un servidor remoto.
 
@@ -18,9 +18,9 @@ Este proyecto implementa un pipeline CI/CD para construir, publicar y desplegar 
 
 ```
     
-## Componentes
+## Componentes 🧩
 
-**1. Dockerfile**
+**1. Dockerfile** 🐳
 
 Este Dockerfile utiliza una imagen base de NGINX y copia el archivo index.html para servirlo como contenido estático.
 
@@ -29,7 +29,7 @@ FROM nginx:alpine
 COPY index.html /usr/share/nginx/html/index.html
 ```
 
-**2. Archivo index.html**
+**2. Archivo index.html** 🌐
 
 El archivo HTML que será servido por NGINX:
 ```bash
@@ -46,7 +46,7 @@ El archivo HTML que será servido por NGINX:
 </html>
 ```
 
-**3-Pipeline CI/CD (ci-cd.yml)**
+**3-Pipeline CI/CD (ci-cd.yml)** ⚙️
 
 El pipeline implementado en GitHub Actions automatiza el proceso de construcción, publicación y despliegue.
 
@@ -69,13 +69,13 @@ on:
 
  - Clona el repositorio en el runner de GitHub Actions
 
- 
+
 ```bash
 - name: Checkout code
   uses: actions/checkout@v3
 ```
 
-**2-Inicio de Sesión en Docker Hub**
+**2-Inicio de Sesión en Docker Hub** 🐳
 
 Autentica en Docker Hub usando las credenciales almacenadas en los secretos del repositorio:
 
@@ -171,9 +171,14 @@ Activa el pipeline manualmente desde la interfaz de GitHub Actions.
 Accede al servidor remoto para confirmar que la nueva versión está disponible en http://<IP__PUBLICA_DEL_SERVIDOR>.
 
 
-### IMPORTANTE
+🚨 **IMPORTANTE!** 🚨
+
 - El servidor remoto debe tener Docker instalado y configurado.
 - Conexion via ssh desde internet para que se pueda desplegar el contenido.
 
+### Autor
 
-Con este pipeline, el proceso de despliegue está completamente automatizado y sigue las mejores prácticas de CI/CD. Muchas gracias por tu tiempo 😊
+**Eliel Bloemer**
+
+Con este pipeline, el proceso de despliegue está completamente automatizado y sigue las mejores prácticas de CI/CD. Muchas gracias por tu tiempo
+Si tienes dudas, por favor no dudes en contactarme.😊

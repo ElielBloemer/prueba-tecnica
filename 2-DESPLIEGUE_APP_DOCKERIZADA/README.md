@@ -113,7 +113,7 @@ http://localhost:3000
 
 ![alt text](./image-1.png)
 
- ## DESPLIEGUE PARA CLOUD(EKS,GKE) ☸️
+ ## DESPLIEGUE PARA CLOUD(EKS,GKE) ☸️ ☁️
 Requisitos Previos:
 
 - 1-Kubernetes Cluster: ☸️

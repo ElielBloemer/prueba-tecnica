@@ -1,8 +1,8 @@
 
-# Diagrama de Red
+# Diagrama de Red ☁️
 
 Arquitectura de la Aplicación Web en AWS
-Este proyecto detalla la arquitectura y el despliegue de una aplicación web distribuida en la nube utilizando Amazon Web Services (AWS). El sistema está diseñado para soportar cargas variables, garantizar alta disponibilidad (HA), y manejar una base de datos relacional y otra no relacional. Además, el backend interactúa con dos microservicios externos, se eligio AWS para diagramar no mas.
+Este proyecto detalla la arquitectura y el despliegue de una aplicación web distribuida en la nube utilizando Amazon Web Services (AWS). El sistema está diseñado para soportar cargas variables, garantizar alta disponibilidad (HA), y manejar una base de datos relacional y otra no relacional. Además, el backend interactúa con dos microservicios externos, se eligio AWS para diagramar.
 
 El diseño de red está representado en el diagrama siguiente:
 
@@ -64,6 +64,13 @@ Amazon Route 53: Gestiona el DNS de la aplicación, redirigiendo los usuarios al
 
 - Nodos distribuidos en múltiples zonas de disponibilidad.
 - Balanceadores de carga garantizan que el tráfico se dirija a los nodos disponibles.
+
 **2-Cargas Variables:**
 
 - Los HPA y cluster Autoscaler en el cluster EKS escalan los servicios según el uso de recursos.
+
+### Autor
+
+**Eliel Bloemer**
+
+Si tienes dudas, por favor no dudes en contactarme.😊
