@@ -111,7 +111,7 @@ http://localhost:3000
 ## DESPLIEGUE PARA CLOUD(EKS,GKE)
 Requisitos Previos:
 - 1-Kubernetes Cluster:
-Un cluster Kubernetes funcionando (puede ser en minikube, EKS, GKE, etc.).
+Un cluster Kubernetes funcionando (EKS, GKE).
 - 2-Kubectl:
   Instalar kubectl y autenticarse contra la api k8s.
 **IMPORTANTE!**
