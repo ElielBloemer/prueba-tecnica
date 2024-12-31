@@ -39,6 +39,7 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           echo "Creando y ejecutando el script en el servidor remoto..."
+          mkdir -p ~/deploy-scripts
           cat << 'EOF' > ~/deploy-scripts/deploy.sh
           #!/bin/bash
 
