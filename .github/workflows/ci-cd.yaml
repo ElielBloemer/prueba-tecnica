@@ -40,10 +40,10 @@ jobs:
         script: |
           echo "Creando y ejecutando el script en el servidor remoto..."
           mkdir -p ~/deploy-scripts
-          cat << 'EOF' > ~/deploy-scripts/deploy.sh
+          cat << EOF > ~/deploy-scripts/deploy.sh
           #!/bin/bash
 
-          if [ -z "$1" ]; then
+          if [ -z "\$1" ]; then
             echo "Error: Debes proporcionar el hash SHA como parámetro."
             echo "Uso: \$0 <sha>"
             exit 1
