@@ -105,8 +105,8 @@ Asegúrate de que API_SERVER=http://back:8000/api/ apunte al backend, en el arch
 
 Método: POST
 http://localhost:3000
-![alt text](image.png)
-![alt text](image-1.png)
+![alt text](./image.png)
+![alt text](./image-1.png)
 
 ## DESPLIEGUE PARA CLOUD(EKS,GKE)
 Requisitos Previos:
