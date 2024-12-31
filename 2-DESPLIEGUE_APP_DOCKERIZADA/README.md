@@ -113,10 +113,12 @@ http://localhost:3000
 
 ![alt text](./image-1.png)
 
-## DESPLIEGUE PARA CLOUD(EKS,GKE)
+ ## DESPLIEGUE PARA CLOUD(EKS,GKE) ☸️
 Requisitos Previos:
-- 1-Kubernetes Cluster:
+
+- 1-Kubernetes Cluster: ☸️
 Un cluster Kubernetes funcionando (EKS, GKE).
+
 - 2-Kubectl:
   Instalar kubectl y autenticarse contra la api k8s.
 
