@@ -5,8 +5,6 @@
 Este proyecto contiene una aplicación web compuesta por un backend desarrollado en Django y un frontend en React.js.
 Todo el sistema está configurado para ser desplegado usando Docker Compose, lo que permite simplificar la administración de los servicios.
 
-
-
 ## Estructura del proyecto:
 
 ```bash
@@ -25,7 +23,6 @@ Todo el sistema está configurado para ser desplegado usando Docker Compose, lo 
 │   └── data/             # Volumen persistente de la base de datos
 ├── docker-compose.yml    # Configuración de los servicios
 ```
-
 
 ## Despliegue Local
 
@@ -60,7 +57,8 @@ El archivo docker-compose.yml define los siguientes servicios:
    Expone el puerto 3000.
    Configurado para depender del backend.
 
-Construcción de las Imágenes
+### Construcción de las Imágenes:
+
 Se implementaron Dockerfiles multistage para optimizar las imágenes del backend y frontend.
 
 Redes y Dependencias
@@ -74,15 +72,12 @@ Esto mejora la separación y la seguridad del tráfico interno.
   docker-compose up --build
 ```
 
-
 Frontend: http://localhost:3000
-
-
 
 Backend: http://localhost:8000
 
 ## Probando backend
-Registrar usuarios en el Backend,se tuvo que entender el codigo para asi generar usuarios
+Registrar usuarios en el Backend,se tuvo que entender el codigo para asi generar usuarios...
 
 Endpoint: http://localhost:8000/api/users/register
 Método: POST
