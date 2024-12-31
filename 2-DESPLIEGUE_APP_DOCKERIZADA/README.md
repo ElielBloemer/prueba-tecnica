@@ -213,10 +213,12 @@ Forwarding from 127.0.0.1:3000 -> 3000
 
 Forwarding from [::1]:3000 -> 3000
 
-Autor
+### Observabilidad y metricas
 
+No te olvides de monitorear los servicios!
+Para eso puedes hacer uso de herramientas como por ejemplo grafana,prometheus,alertmanager, etc.
 
-
+### Autor
 
 **Eliel Bloemer**
 
