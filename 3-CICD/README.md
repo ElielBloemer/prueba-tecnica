@@ -69,11 +69,12 @@ El directorio helm/ contiene los manifiestos necesarios para desplegar el servid
  - service.yaml: Configura el servicio para exponer el pod.
  - ingress.yaml: Define las reglas de entrada para el acceso externo.
  - hpa.yaml: Configuración del autoscalado horizontal.
+ - externalsecret.yaml: configuracion que define el uso de externalsecret que gestionara los secrets de la app,si es que la usa.
  - values.yaml: Contiene los valores dinámicos, como el nombre de la imagen y el tag.
 
 ```bash
  repository: "ebloemer/nginx-server"
- tag: "latest"
+ tag: "2eab134efabf1776bab62e64b60022faa7ac1d2d"
 ```
 
 **4-Pipeline CI/CD (ci-cd.yml)** ⚙️
@@ -124,7 +125,6 @@ Autentica en Docker Hub usando las credenciales almacenadas en los secretos del 
 - name: Build Docker image
   run: |
     docker build -t ebloemer/nginx-server:${{ github.sha }} -f 3-CICD/Dockerfile 3-CICD
-    echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
 ```
 
 **4-Publicación de la Imagen**
@@ -149,6 +149,7 @@ Publica la imagen en Docker Hub para que esté disponible para el servidor remot
 ```
 
 **6-Commit y Push del Cambio**
+
 - Realiza un commit del archivo modificado y lo sube al repositorio
 
 ```bash
