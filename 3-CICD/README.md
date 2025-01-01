@@ -202,7 +202,7 @@ Activa el pipeline manualmente desde la interfaz de GitHub Actions.
 
 ### Panel de ArgoCD
 
-![alt text](image-1.png)
+![alt text](image.png)
 
 ### Para probar debes hacer un port-forward:
 
@@ -214,7 +214,7 @@ Forwarding from [::1]:4000 -> 80
 
 ### Prueba con port-forward
 
-![alt text](image-2.png)
+![alt text](image-3.png)
 
 🚨 **IMPORTANTE!** 🚨
 
