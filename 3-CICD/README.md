@@ -214,4 +214,10 @@ Forwarding from [::1]:4000 -> 80
 
 - Debes estar logueado en la api de kubernetes
 
-Con este pipeline, el proceso de despliegue está completamente automatizado y sigue las mejores prácticas de CI/CD. Muchas gracias por tu tiempo 😊
+Con este pipeline, el proceso de despliegue está completamente automatizado,si tienes dudas, por favor no dudes en contactarme.
+
+Muchas gracias por tu tiempo 😊
+
+### Autor
+
+**Eliel Bloemer**
