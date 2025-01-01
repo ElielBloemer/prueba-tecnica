@@ -168,7 +168,7 @@ Publica la imagen en Docker Hub para que esté disponible para el servidor remot
 - Se decidio usar GitOps para realizar el CD de nginx-webserver para eso se uso argocd-replicacionset con el manifiesto de Applicationset.yaml.
 - Cualquier aplicacion desplegada en apps/*/helm sera creada por ArgoCD.
 - Crea automáticamente los namespaces especificados y asegura que los recursos sean actualizados.
-- Ademas se debe aplicar el manifiesto Applicationser.yaml en su cluster Kubernetes, el manifiesto debe ser aplicado en el namespace argocd
+- Ademas se debe aplicar el manifiesto Applicationset.yaml en su cluster Kubernetes, debe ser aplicado en el namespace argocd
 
 ```bash
 ...
