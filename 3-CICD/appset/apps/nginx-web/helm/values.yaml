@@ -3,7 +3,8 @@ replicaCount: 1
 image:
   repository: "ebloemer/nginx-server"
   pullPolicy: IfNotPresent
-  tag: "v2"
+  tag: "2eab134efabf1776bab62e64b60022faa7ac1d2d"
+
 
 revisionHistoryLimit: 3
 
