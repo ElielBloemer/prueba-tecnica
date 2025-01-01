@@ -15,6 +15,6 @@ spec:
         #timeout is expressed in seconds
         timeout: 10
         query: /
-        sum(irate(nginx_ingress_controller_requests{ingress="test-nginx",status!~"5.*"}[1m]))
-        /
-        sum(irate(nginx_ingress_controller_requests{ingress="test-nginx"}[1m]))
+          sum(irate(nginx_ingress_controller_requests{ingress="test-nginx",status!~"5.*"}[1m]))
+          /
+          sum(irate(nginx_ingress_controller_requests{ingress="test-nginx"}[1m]))
