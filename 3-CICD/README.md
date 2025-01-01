@@ -74,7 +74,7 @@ El directorio helm/ contiene los manifiestos necesarios para desplegar el servid
 
 ```bash
  repository: "ebloemer/nginx-server"
- tag: "2eab134efabf1776bab62e64b60022faa7ac1d2d"
+ tag: "0d24788434d6e9454f2517519771dedbfac146f4"
 ```
 
 **4-Pipeline CI/CD (ci-cd.yml)** ⚙️
