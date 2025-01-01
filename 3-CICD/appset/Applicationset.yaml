@@ -32,6 +32,3 @@ spec:
         - PruneLast=True
         automated:
           prune: true
-        managedNamespaceMetadata:
-          labels:
-            istio-injection: enabled

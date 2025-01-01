@@ -98,7 +98,7 @@ secrets:
   key: REG-DEV-API-SERVICES #Nombre del secreto en AWS Secrets Manager
   datasecret:
   - secretKeyName: PASS_SECRET_TEST
-    secretKeyAWS: TEST_SECRET_REG_DEV_PASS
+    secretKeyAWS: TEST_SECRET_DEV_PASS_AWS
   
 volumes: []
 
