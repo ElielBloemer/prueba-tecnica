@@ -1,7 +1,7 @@
 
 # Pipeline CI/CD para NGINX con Actualización Automática ⚙️
 
-Este proyecto implementa un pipeline CI/CD para construir, publicar y desplegar una imagen de Docker que contiene un servidor NGINX con un archivo index.html predeterminado. El pipeline está configurado para reaccionar a cambios en el archivo index.html y desplegar automáticamente la nueva versión en un servidor remoto.
+Este proyecto implementa un pipeline CI/CD para construir, publicar y desplegar una imagen de Docker que contiene un servidor NGINX con un archivo index.html predeterminado. El pipeline está configurado para reaccionar a cambios en el archivo index.html y desplegar automáticamente la nueva versión en tu cluster kubernetes.
 
 
 ## Estructura del Proyecto
