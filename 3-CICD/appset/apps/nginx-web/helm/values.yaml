@@ -28,11 +28,11 @@ service:
   targetPort: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: nginx-public
   annotations: {}
   hosts:
-    - host: DNS-TEST.com
+    - host: web-server-nginx.app.sbx.invertironline.com
       paths:
         - path: /
           pathType: Prefix
@@ -78,7 +78,7 @@ strategyRollingUpdate:
   maxUnavailable: 0%
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80
