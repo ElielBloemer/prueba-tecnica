@@ -40,7 +40,7 @@ jobs:
         git commit -m "Update values.yaml with new image tag: ${{ github.sha }}"
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}    
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
 
     # - name: Deploy on remote server
     #   uses: appleboy/ssh-action@v0.1.10
