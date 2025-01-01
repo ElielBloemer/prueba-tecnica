@@ -56,7 +56,7 @@ El archivo HTML que será servido por NGINX:
     <title>NGINX Server</title>
 </head>
 <body>
-    <h1>😊BEM VINDO AO NGINX FAÇA BOM USO!VAI DAR BOM!!! 🎉FELIZ E PROSPERO ANO NOVO 🎉!! </h1>
+    <h1>😊BEM VINDO AO NGINX FAÇA BOM USO!VAI DAR BOM 😊!!! 🎉FELIZ E PROSPERO ANO NOVO 🎉!! </h1>
 </body>
 </html>
 
