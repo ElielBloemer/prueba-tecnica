@@ -30,13 +30,13 @@ jobs:
 
     - name: Update Helm values file
       run: |
-        sed -i "s|tag:.*|tag: \"${{ github.sha }}\"|g" 3-CICD/appset/apps/nginx-web-server/values.yaml
+        sed -i "s|tag:.*|tag: \"${{ github.sha }}\"|g" 3-CICD/appset/apps/nginx-web-server/helm/values.yaml
 
     - name: Commit and Push Updated values.yaml
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add 3-CICD/appset/apps/nginx-web/values.yaml
+        git add 3-CICD/appset/apps/nginx-web-server/helm/values.yaml
         git commit -m "Update values.yaml with new image tag: ${{ github.sha }}"
         git push
       env:
