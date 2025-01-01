@@ -8,7 +8,8 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
-      repoURL: git@github.com:ElielBloemer/prueba-tecnica.git
+      #repoURL: git@github.com:ElielBloemer/prueba-tecnica.git
+      repoURL: https://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@github.com/ElielBloemer/prueba-tecnica.git
       revision: HEAD
       directories:
       - path: 3-CICD/appset/apps/*/helm
@@ -18,7 +19,8 @@ spec:
     spec:
       project: "default"
       source:
-        repoURL: git@github.com:ElielBloemer/prueba-tecnica.git
+        #repoURL: git@github.com:ElielBloemer/prueba-tecnica.git
+        repoURL: https://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@github.com/ElielBloemer/prueba-tecnica.git
         targetRevision: HEAD
         path: '{{.path.path}}'
       destination:

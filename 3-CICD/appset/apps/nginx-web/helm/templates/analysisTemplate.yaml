@@ -14,6 +14,7 @@ spec:
         insecure: true
         #timeout is expressed in seconds
         timeout: 10
-        query: rate(nginx_ingress_controller_requests{ingress="test-nginx",status!~"5.*"}[1m])
+        query: /
+        sum(irate(nginx_ingress_controller_requests{ingress="test-nginx",status!~"5.*"}[1m]))
         /
-        rate(nginx_ingress_controller_requests{ingress="test-nginx"}[1m])
+        sum(irate(nginx_ingress_controller_requests{ingress="test-nginx"}[1m]))

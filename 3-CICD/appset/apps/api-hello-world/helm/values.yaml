@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   #PASAR
-  repository: "637423397951.dkr.ecr.us-east-1.amazonaws.com/markets/validator.marketdata"
+  repository: "ebloemer/nginx-server"
   pullPolicy: IfNotPresent
   #PASAR
   tag: "70c2a3e"
