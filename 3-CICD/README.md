@@ -199,6 +199,9 @@ Activa el pipeline manualmente desde la interfaz de GitHub Actions.
 
 - Accede al panel de ArgoCD.
 - Verifica que la aplicación se sincronice correctamente con los cambios del repositorio.
+
+### Panel de ArgoCD
+
 ![alt text](image-1.png)
 
 ### Para probar debes hacer un port-forward:
@@ -208,6 +211,8 @@ kubectl port-forward svc/nginx-web-server -n nginx-web-server 4000:80
 Forwarding from 127.0.0.1:4000 -> 80
 Forwarding from [::1]:4000 -> 80
 ```
+
+### Prueba con port-forward
 
 ![alt text](image-2.png)
 
