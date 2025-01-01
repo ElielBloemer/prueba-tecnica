@@ -1,0 +1,139 @@
+replicaCount: 1
+
+image:
+  #PASAR
+  repository: "637423397951.dkr.ecr.us-east-1.amazonaws.com/markets/validator.marketdata"
+  pullPolicy: IfNotPresent
+  #PASAR
+  tag: "70c2a3e"
+
+revisionHistoryLimit: 2
+
+# PASAR NOMBRE APLICACION
+fullnameOverride: validator-marketdata
+
+serviceAccount:
+  create: false
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations:
+#PASAR
+ kubernetes.io/change-cause: "Merge branch regional into h..."
+
+podLabels: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  #PASAR
+  targetPort: 5000
+
+ingress:
+  enabled: true
+  #PASAR
+  className: nginx-public
+  annotations: {}
+  hosts:
+      #PASAR
+    - host: validator-marketdata.dev.regional.iolinversiones.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+resources:
+  limits:
+     #PASAR
+     cpu: 2000m
+     #PASAR
+     memory: 1Gi
+  requests:
+    #PASAR
+    cpu: 50m
+    #PASAR
+    memory: 150Mi
+
+livenessProbe:
+  failureThreshold: 3
+  httpGet:
+    #PASAR
+    path: /healthcheck
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 15
+  successThreshold: 1
+  timeoutSeconds: 1
+
+readinessProbe:
+  failureThreshold: 4
+  httpGet:
+    #PASAR
+    path: /healthcheck
+    port: http
+  initialDelaySeconds: 6
+  periodSeconds: 16
+  successThreshold: 2
+  timeoutSeconds: 2
+
+startupProbe:
+  failureThreshold: 30
+  httpGet:
+    path: /healthcheck
+    port: http
+  initialDelaySeconds: 15
+  periodSeconds: 5
+  successThreshold: 1
+  timeoutSeconds: 5
+
+#PASAR
+strategyRollingUpdate:
+  maxSurge: 25%
+  maxUnavailable: 0%
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 90
+
+env:
+  enabled: true
+  dataenv:
+  - name: ASPNETCORE_ENVIRONMENT
+    value: QA
+  - name: MARKET_NAME
+    value: REGIONAL
+
+secrets:
+  enabled: true
+  nameSecretK8S: validator-external
+  key: SECRETS-REGIONAL-DEV
+  datasecret:
+  - secretKeyName: SqlServerSettings__ConnectionString
+    secretKeyAWS: SQLSERVERSETTINGS__CONNECTIONSTRING__VALIDATORMARKETDATA_AWS
+  - secretKeyName: RedisSettings__Password
+    secretKeyAWS: REDISSETTINGS__PASSWORD_NET_AWS
+  - secretKeyName: RedisSettings__Host
+    secretKeyAWS: REDISSETTINGS__HOST_NET_AWS
+  - secretKeyName: KafkaSettings__SaslPassword
+    secretKeyAWS: KAFKASETTINGS_SASLPASSWORD_AWS
+  - secretKeyName: KafkaSettings__SaslUsername
+    secretKeyAWS: KAFKASETTINGS_SASLUSERNAME_AWS
+  - secretKeyName: KafkaSettings__BootstrapServers
+    secretKeyAWS: KAFKASETTINGS_BOOTSTRAPSERVERS_AWS
+  
+volumes: []
+
+volumeMounts: []
+#PASAR
+nodeSelector:
+  nodegroup: aplicacion_medianas
+
+tolerations: []
+
+affinity: {}
