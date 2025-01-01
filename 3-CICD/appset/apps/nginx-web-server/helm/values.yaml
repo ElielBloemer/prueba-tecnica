@@ -95,16 +95,14 @@ env:
 secrets:
   enabled: false
   nameSecretK8S: NAME-SECRET-K8S
-  key: REG-DEV-API-SERVICES #Nombre del secreto en AWS Secrets Manager
+  key: NGINX-SECRET #Nombre del secreto en AWS Secrets Manager
   datasecret:
   - secretKeyName: PASS_SECRET_TEST
-    secretKeyAWS: TEST_SECRET_DEV_PASS_AWS
+    secretKeyAWS: TEST_SECRET_PASS_AWS
   
 volumes: []
 
 volumeMounts: []
-nodeSelector:
-  nodegroup: aplicacion_medianas
 
 tolerations: []
 
