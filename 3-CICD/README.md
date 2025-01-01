@@ -172,6 +172,23 @@ Publica la imagen en Docker Hub para que esté disponible para el servidor remot
 - Ademas se debe aplicar el manifiesto Applicationset.yaml en su cluster Kubernetes, debe ser aplicado en el namespace argocd
 - Los valores del archivo values.yaml seran utilizados en la creacion de la aplicacion,incluye variables de entorno secrets,probes,etc.
 
+Se puede observar la variable de ambiente pasada en el values.yaml inyectada en el pod.
+
+```bash
+kubectl exec -it nginx-web-server-f99b55d65-p58p4 -n nginx-web-server -- env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=nginx-web-server-f99b55d65-p58p4
+NGINX_VERSION=1.27.3
+PKG_RELEASE=1
+DYNPKG_RELEASE=1
+NJS_VERSION=0.8.7
+NJS_RELEASE=1
+ENVIRONMENT=homologacion <-- VARIABLE PASADA EN EL VALUES.YAML
+```
+
+### **Manifiesto Applicationset.yaml**
+
+
 ```bash
 ...
   generators:
